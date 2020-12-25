@@ -10,7 +10,7 @@ void quickSort(int *arr, int start, int end){
 	i = start+1;
 	j = end;
 	
-	while(i <= j){
+	while(i < j){
 		while(arr[i] <= arr[key]){
 			i++;
 		}
@@ -18,7 +18,7 @@ void quickSort(int *arr, int start, int end){
 			j--;
 		}
 		
-		if(i>j){
+		if(i>=j){
 			temp = arr[j];
 			arr[j] = arr[key];
 			arr[key] = temp;

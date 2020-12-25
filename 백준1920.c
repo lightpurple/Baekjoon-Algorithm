@@ -1,37 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void quickSort(int *arr, int start, int end){
-	if(start >= end){
-		return;
-	}
+int compare(const void *a, const void *b){
+	int num1 = *(int *)a;
+	int num2 = *(int *)b;
 	
-	int i,j,temp,key;
-	key = start;
-	i = start+1;
-	j = end;
-	
-	while(i <= j){
-		while(arr[i] <= arr[key]){
-			i++;
-		}
-		while(arr[j] >= arr[key] && j>start){
-			j--;
-		}
+	if(num1 < num2)
+		return -1;
 		
-		if(i>j){
-			temp = arr[j];
-			arr[j] = arr[key];
-			arr[key] = temp;
-		}else{
-			temp = arr[j];
-			arr[j] = arr[i];
-			arr[i] = temp;
-		}
-	}
+	if(num1 > num2)
+		return 1;
 	
-	quickSort(arr,start,j-1);
-	quickSort(arr,j+1,end);
+	return 0;
 }
 
 void cmpNum(int *std, int start, int end, int key){
@@ -44,7 +24,7 @@ void cmpNum(int *std, int start, int end, int key){
 	
 	if(std[mid] > key){
 		cmpNum(std,start,mid-1,key);
-	}else if(std[mid]< key){
+	}else if(std[mid] < key){
 		cmpNum(std,mid+1,end,key);
 	}else{
 		printf("1\n");
@@ -62,14 +42,15 @@ int main(){
 		scanf("%d", &std[i]);
 	}
 	
-	quickSort(std,0,N-1);
+	qsort(std, sizeof(std)/sizeof(int), sizeof(int), compare);
 
 	scanf("%d", &M);
 	
 	for(i=0; i<M; i++){
 		scanf("%d", &tmp);
-		cmpNum(std,0,N,tmp);
+		cmpNum(std,0,N-1,tmp);
 	}
+	
 	free(std);
 	return 0;
 } 
