@@ -1,24 +1,31 @@
 #include <stdio.h>
 
-int main(){
-	int count=0, N;
-	scanf("%d", &N);
-											//5보다 큰 수에 한해서 
-	while(N>=5 && ((N%5)%3==0 || N%5==0)){ //5로 나눈 값이 3으로 나누어지거나 
-		N -= 5;                            //5로 나누어질 때 
-		count++;
-	} //11에서 막힘
-	
-	while(N>=3){
-		N -= 3;
-		count++;
+int divMax(int n, int a){
+	if(a < 0){
+		return -1;
 	}
-	
-	if(N != 0){
-		printf("%d", -1);
+	if(n-(5*a) == 0){
+		return a;
+	}else if((n-(5*a))%3 == 0){
+		return a+((n-(5*a))/3);
 	}else{
-		printf("%d", count);
+		divMax(n, a-1);
 	}
-	
-	return 0;
 }
+
+int main(){
+	int N,a;
+	scanf("%d", &N);
+	
+	if(N>=5){
+		a = N/5;
+		printf("%d", divMax(N,a));
+	}else{
+		if(N%3 == 0){
+			printf("%d", 1);
+		}else{
+			printf("%d", -1);
+		}
+	}
+	return 0;
+} 
