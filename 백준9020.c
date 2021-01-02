@@ -26,12 +26,17 @@ void gold(int n){
 	if(a%2 != 0){	//n을 2로 나눈 값이 홀수 일 때 
 		findResult(a,a);
 	}else{			//n을 2로 나눈 값이 짝수 일 때 
+<<<<<<< HEAD
 		if(n == 4)
 			findResult(a,a); //n이 4일 때
 		else{ 
 			a -= 1;
 			findResult(a,a+2);
 		}
+=======
+		a -= 1;
+		findResult(a,a+2);
+>>>>>>> a2f4d8215f6773c690768aea7258f5e6b0023406
 	}
 	return;
 }
