@@ -1,29 +1,26 @@
 #include <stdio.h>
-#define SIZE 1000001
-
-int arr[SIZE] = {0,};	
+#include <stdbool.h>
 
 int main(){
-	int M,N,i,j,tmp;
-	scanf("%d %d", &M, &N);
-	
+	int i,j,k,a,b;
+	bool arr[1000002] = {0,};
 	arr[1] = 1;
-	
-	for(i=2; i<=N; i++){
-		tmp = i;
-		while(tmp<=N){
-			tmp += i;
-			if(arr[tmp] == 0){
-				arr[tmp] = 1;
+	for(j=2; j<=500000; j++){
+		for(k=2; k*j<=1000000; k++){
+			if(arr[j*k] == 1){
+				continue;
+			}else{
+				arr[j*k] = 1;
 			}
 		}
 	}
 	
-	for(i=M;i<=N;i++){
-		if(arr[i]==0){
+	scanf("%d %d", &a, &b);
+	
+	for(i=a; i<=b; i++){
+		if(!arr[i]){
 			printf("%d\n", i);
-		}else
-			continue;
+		}
 	}
 	return 0;
 }
