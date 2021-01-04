@@ -37,5 +37,6 @@ int main(){
 	for(i=0; i<N; i++){
 		printf("%d %s\n", m[i].age, m[i].name);
 	}
+	free(m);
 	return 0;
 }
