@@ -18,7 +18,7 @@ int main(){
 	int *fir = arr, *last = &arr[n-1];
 	int count=0;
 	
-	while(*fir<*last){
+	while(*fir < *last){
 		if((*fir) + (*last) == x){
 			count++;
 			fir++;
