@@ -1,5 +1,6 @@
 var input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
 var arr = [];
+var answer = "";
 
 function push_front(x) {
   arr.unshift(x);
@@ -11,28 +12,29 @@ function push_back(x) {
 
 function pop_front() {
   const res = arr.shift();
-  console.log(res === undefined ? -1 : res);
+  answer += res === undefined ? `-1\n` : `${res}\n`;
 }
 
 function pop_back() {
   const res = arr.pop();
-  console.log(res === undefined ? -1 : res);
+  answer += res === undefined ? `-1\n` : `${res}\n`;
 }
 
 function size() {
-  console.log(arr.length);
+  answer += `${arr.length}\n`;
 }
 
 function empty() {
-  console.log(arr.length === 0 ? 1 : 0);
+  answer += arr.length === 0 ? `1\n` : `0\n`;
 }
 
 function front() {
-  console.log(arr[0] === undefined ? -1 : arr[0]);
+  answer += arr[0] === undefined ? `-1\n` : `${arr[0]}\n`;
 }
 
 function back() {
-  console.log(arr[arr.length - 1] === undefined ? -1 : arr[arr.length - 1]);
+  answer +=
+    arr[arr.length - 1] === undefined ? `-1\n` : `${arr[arr.length - 1]}\n`;
 }
 
 for (let i = 1; i < input.length; i++) {
@@ -56,4 +58,5 @@ for (let i = 1; i < input.length; i++) {
     empty();
   }
 }
+console.log(answer);
 
